@@ -1,0 +1,3 @@
+default_test_timeout_minutes: 10
+default_browser: firefox
+cache_directory: log/cache
