@@ -1,5 +1,5 @@
 Given (/^that I navigate to the website$/) do
-	visit(HomePage)
+	visit('http://staging-superstars.avenuecode.com')
 end
 
 And (/^I click on "(.*?)" button$/) do |button|
@@ -47,12 +47,10 @@ And (/^I enter "(.*?)" into input field having id "(.*?)"$/) do |value, field|
       Log.instance.debug "Field '#{field}' filled with value: #{value}"
 	end
 
-  And (/^I wait for 10 sec$/) do
-
+  And (/^I wait for \d? seconds$/) do |seconds|
+    sleep (seconds)
+    Log.instance.debug "Waited #{seconds} seconds"
   end
 
-  Then (/^I should be logged in$/) do
-
-  end
 
 end
