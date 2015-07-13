@@ -1,5 +1,9 @@
 require 'rubygems'
 require 'selenium-cucumber'
+require 'capybara'
+require 'capybara/rails'
+require 'capybara/cucumber'
+require 'capybara/session'
 
 module ExecutionEnvironment
 
@@ -17,10 +21,6 @@ module ExecutionEnvironment
     	env_browser = ENV['BROWSER'] || ENV['BROWSERNAME'] || ENV['BROWSER_NAME'] || ENV['DEVICE']
     	env_browser.nil_or_empty? ? config['default_browser'].to_sym : env_browser.downcase.to_sym
   end
-
-
-
-
 
 
 end

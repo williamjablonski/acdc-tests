@@ -1,4 +1,4 @@
-module SuperStars
+
 	class HomePage
 		include PageObject
 
@@ -11,7 +11,8 @@ module SuperStars
 
 		def initialize_page
 			has_expected_element?
+      @HomePage = 'http://staging-superstars.avenuecode.com'
 		end
 
 	end
-end
+
