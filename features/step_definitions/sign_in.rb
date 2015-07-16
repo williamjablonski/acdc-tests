@@ -1,5 +1,7 @@
+
+
 Given (/^that I navigate to the website$/) do
-	visit('http://staging-superstars.avenuecode.com')
+	visit('http://staging­superstars.avenuecode.com')
 end
 
 And (/^I click on "(.*?)" button$/) do |button|
@@ -32,7 +34,7 @@ And (/^I click on "(.*?)" button$/) do |button|
 	Log.instance.debug "Clicked on #{button} button"
 end
 
-And (/^I enter "(.*?)" into input field having id "(.*?)"$/) do |value, field|
+And (/^I enter "(.*?)" into input field having id "(.*?)" there$/) do |value, field|
   selected_field = nil
   case field
 		when 'Email'
