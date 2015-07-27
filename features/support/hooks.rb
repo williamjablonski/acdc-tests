@@ -7,7 +7,6 @@ Before do
   else
     @browser = Watir::Browser.new :firefox
   end
- # @browser.driver.manage.timeouts.implicit_wait = 10
 end
 
 Before do |scenario|
@@ -29,12 +28,13 @@ After do |scenario|
   
 
   if(scenario.failed?)
-    time = Time.new
     #Do something if scenario fails.
-    #page.driver.browser.save_screenshot("./reports/#{time.strftime("%Y-%m-%d")}-#{scenario.__id__}.png")
-    #@browser.driver.save_screenshot("./reports/#{time.strftime("%Y-%m-%d")}-#{scenario.__id__}.png")
-    @current_page.driver.browser.save_screenshot("./reports/#{time.strftime("%Y-%m-%d")}-#{scenario.__id__}.png")
-    embed("#{time.strftime("%Y-%m-%d")}-#{scenario.__id__}.png", "image/png", "SCREENSHOT")
+
+    time = Time.new
+    filename = "./reports/error-#{time.strftime("%Y-%m-%d")}-#{@current_page.class}.png"
+    @browser.screenshot.save (filename)
+    embed(filename, 'image/png')
+
   end
 
   @browser.close
