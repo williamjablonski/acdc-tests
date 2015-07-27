@@ -1,2 +1,2 @@
-default: -r features/support -r features/step_definitions --profile html_report --color
-html_report: --format progress --format html --out=reports/features_report.html
+default: --format html --out=reports/features_report.html
+firefox: --format pretty BROWSER=firefox
