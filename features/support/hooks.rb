@@ -7,6 +7,9 @@ Before do
   else
     @browser = Watir::Browser.new :firefox
   end
+
+  DataMagic.yml_directory = nil
+  DataMagic.yml = nil
 end
 
 Before do |scenario|

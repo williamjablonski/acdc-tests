@@ -4,12 +4,14 @@
  Feature: Basic User Authentication
 
  Scenario: Verify if the website is performing a login correctly
-   Given that I navigate to SuperStarsHomePage
+   Given I navigate to SuperStarsHomePage
    Then I click on "Sign in" button
    And I click on "Add account" button
-   Then I enter "user1acdc@avenuecode.com" into input field having id "Email" there
+   Then I fill the "Email" field
    And I click on "Next" button
-   Then I enter "acdcuser1" into input field having id "Passwd" there
+   Then I fill the "Passwd" field
    When I click on "Log In" button
+   Then I approve superstars to access my account
+   When I navigate to SuperStarsInitialPage
    And I wait for 10 seconds
    Then I should be logged in

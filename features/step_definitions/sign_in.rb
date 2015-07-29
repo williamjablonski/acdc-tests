@@ -1,61 +1,58 @@
 
 
-Given (/^that I navigate to (.+?)$/) do |page|
+Given (/^I navigate to (.+?)$/) do |page|
 	visit(page)
 end
 
 And (/^I click on "(.*?)" button$/) do |button|
+	@current_page = nil
 	case button
 		when 'Sign in'
-			on(SuperStarsHomePage) do
-				if sign_in_element.visible?
-					sign_in_element.click
-				end
+			@current_page = on(SuperStarsHomePage)
+			if @current_page.sign_in_element.visible?
+				@current_page.sign_in
 			end
+			
 		when 'Add account'
-			on(SignInPage) do
-				if add_account_button_element.visible?
-					add_account_button_element.click
-				end
+			@current_page = on(SignInPage)
+			if @current_page.add_account_button_element.visible?
+				@current_page.add_account_button
 			end
+			
 		when 'Next'
-			on(SignInPage) do
-				if next_button_element.visible?
-					next_button_element.click
-				end
+			@current_page = on(SignInPage) 
+			if @current_page.next_button_element.visible?
+				@current_page.next_button
 			end
+			
 		when 'Log in' 
-			on(SignInPage) do
-				if sign_in_button_element.visible?
-					sign_in_button_element.click
-				end
+			@current_page = on(SignInPage) 
+			if @current_page.sign_in_button_element.visible?
+				@current_page.sign_in_button_element.click
 			end
+			
 	end
-	Log.instance.debug "Clicked on #{button} button"
+	#Log.instance.debug "Clicked on #{button} button"
 end
 
-And (/^I enter "(.*?)" into input field having id "(.*?)" there$/) do |value, field|
-  selected_field = nil
-  case field
-		when 'Email'
-			on(SignInPage) do
-        selected_field = account_user_element
-			end
-		when 'Passwd'
-			on(SignInPage) do
-        selected_field = account_password_element
-      end
-      selected_field.value = value if(selected_field.visible?)
-      Log.instance.debug "Field '#{field}' filled with value: #{value}"
-	end
+Then (/^I fill the "(.*?)" field$/) do |field|
+  on(SignInPage).log_in(field)
 end
 
 When (/^I wait for (\d+) seconds$/) do |seconds|
-    @browser.driver.manage.timeout.implicit_wait = seconds
-    Log.instance.debug "Waited #{seconds} seconds"
+  on(SignInPage).wait(seconds)
+  #Log.instance.debug "Waited #{seconds} seconds"
 end
 
+Then (/^I (.+?) superstars to access my account$/) do |action|
+  case action
+    when 'approve'
+      on(SignInPage).approve_access
+    when 'deny'
+      on(SignInPage).deny_access
+  end
+end
 
 Then(/^I should be logged in$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+	pending # Write code here that turns the phrase above into concrete actions
 end
