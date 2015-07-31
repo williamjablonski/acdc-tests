@@ -1,5 +1,4 @@
 
-
 Given (/^I navigate to (.+?)$/) do |page|
 	visit(page)
 end
@@ -35,8 +34,8 @@ And (/^I click on "(.*?)" button$/) do |button|
 	#Log.instance.debug "Clicked on #{button} button"
 end
 
-Then (/^I fill the "(.*?)" field$/) do |field|
-  on(SignInPage).log_in(field)
+Then (/^I fill the "(.*?)" field with (.+?) data$/) do |field, type_data|
+  on(SignInPage).log_in(field, type_data)
 end
 
 When (/^I wait for (\d+) seconds$/) do |seconds|
@@ -53,6 +52,12 @@ Then (/^I (.+?) superstars to access my account$/) do |action|
   end
 end
 
-Then(/^I should be logged in$/) do
-	pending # Write code here that turns the phrase above into concrete actions
+
+Then(/^I should be on (.+?)$/) do |page|
+  case page
+    when 'SuperStarsHomePage'
+      on(SuperStarsHomePage)
+    when 'SuperStarsInitialPage'
+      on(SuperStarsInitialPage)
+  end
 end

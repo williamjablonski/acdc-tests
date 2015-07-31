@@ -1,0 +1,7 @@
+valid_user:
+  user: msilva@avenuecode.com
+  passwd: lkjasd
+
+invalid_user:
+  user: user1acdc@avenuecode.com
+  passwd: kjhasd

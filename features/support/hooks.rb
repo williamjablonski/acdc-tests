@@ -8,8 +8,6 @@ Before do
     @browser = Watir::Browser.new :firefox
   end
 
-  DataMagic.yml_directory = nil
-  DataMagic.yml = nil
 end
 
 Before do |scenario|
@@ -32,7 +30,6 @@ After do |scenario|
 
   if(scenario.failed?)
     #Do something if scenario fails.
-
     time = Time.new
     filename = "./reports/error-#{time.strftime("%Y-%m-%d")}-#{@current_page.class}.png"
     @browser.screenshot.save (filename)
