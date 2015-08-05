@@ -1,7 +1,7 @@
 valid_user:
-  user: msilva@avenuecode.com
-  passwd: lkjasd
+  user: valid_email@avenuecode.com
+  passwd: valid_passwd
 
 invalid_user:
-  user: user1acdc@avenuecode.com
+  user: user1acdc@blabla
   passwd: kjhasd
