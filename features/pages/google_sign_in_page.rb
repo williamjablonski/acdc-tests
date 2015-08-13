@@ -26,6 +26,8 @@ class GoogleSignInPage
         #wait_until(10, "ERROR: Email field did not load"){account_user_element.visible?}
         if type_data.to_s.eql?('valid')
           self.account_user = user['valid_user']['user']
+        elsif type_data.to_s.eql?('not licensed')
+          self.account_user = user['not_licensed']['user']
         else
           self.account_user = user['invalid_user']['user']
         end
@@ -33,6 +35,8 @@ class GoogleSignInPage
         #wait_until(10, "ERROR: Password field did not load"){account_password_element.visible?}
         if type_data.to_s.eql?('valid')
           self.account_password = user['valid_user']['passwd']
+        elsif type_data.to_s.eql?('not licensed')
+          self.account_password = user['not_licensed']['passwd']
         else
           self.account_password = user['invalid_user']['passwd']
         end
@@ -67,15 +71,17 @@ class GoogleSignInPage
   end
 
   def approve_access
-    if approve_superstars_access?
+    if approve_button_element.visible?
+      wait_until(20, 'ERROR: Approve button is disable'){approve_button_element.enabled?}
       approve_button
     end
 
   end
 
   def deny_access
-    if approve_superstars_access?
-      deny_access
+    if cancel_button_element.visible?
+      wait_until(20, 'ERROR: Cancel button is disable'){cancel_button_element.enabled?}
+      cancel_button
     end
   end
 

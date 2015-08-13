@@ -1,4 +1,4 @@
-# 09/07/2015 - QA Training - SuperStars Automation
+# 07/09/2015 - QA Training - SuperStars Automation
 # Mirna Silva
 
  Feature: Basic User Authentication
@@ -21,9 +21,20 @@
    When I click on "Log in" button
    Then I should see an error message for invalid password
 
- Scenario: Invalid users should be should be routed back to the SignInPage
+ Scenario: Invalid email should display an error message
    Given I navigate to SuperStarsHomePage
    When I click on "Sign in" button
    Then I fill the "Email" field with invalid data
    When I click on "Next" button
    Then I should see an error message for invalid email
+
+   @test
+ Scenario: Not licensed account should be redirected to SuperStars homepage
+   Given I navigate to SuperStarsHomePage
+   When I click on "Sign in" button
+   Then I fill the "Email" field with not licensed data
+   When I click on "Next" button
+   Then I fill the "Passwd" field with not licensed data
+   When I click on "Log in" button
+   And I approve superstars to access my account
+   Then I should be on SuperStarsHomePage

@@ -1,7 +1,11 @@
 valid_user:
-  user: valid_email@avenuecode.com
-  passwd: valid_passwd
+  user: user@avenuecode.com
+  passwd: passw
 
 invalid_user:
   user: user1acdc@blabla
   passwd: kjhasd
+
+not_licensed:
+  user: user@gmail.com
+  passwd: passw
