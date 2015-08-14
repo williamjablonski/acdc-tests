@@ -52,14 +52,12 @@ class SuperStarsInitialPage
 
   def clickLetterMenu(letter)
     @@filter_letter = letter
-    buttons = @browser.elements(:class => 'ng-binding')
-    i = 0
-    while !buttons[i].text.eql?(@@filter_letter) do
-        i+=1
-    end
-
-    if wait_until(20, "ERROR: Button '#{buttons[i].text}' was not displayed"){buttons[i].visible?}
-      buttons[i].click
+    binding.pry
+    @browser.elements(:class => 'ng-binding').each do | element |
+      if element.text == letter
+        element.click
+        break
+      end
     end
   end
 
