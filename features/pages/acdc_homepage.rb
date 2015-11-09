@@ -1,12 +1,10 @@
-class SuperStarsHomePage
+class ACDCHomePage
 	include PageObject
 
-  page_url 'http://superstars.avenuecode.com:3030/#!/signin'
-	#page_url 'http://192.168.0.7:3030'
-	#page_url 'http://superstars.avenuecode.com'
+  page_url 'http://acdc-staging.avenuecode.com/login'
 
 	div		  :superstars_logo, 	:class => 'superstars-logo'
-	button 	:sign_in, 			  	:class => 'signin-btn'
+	button 	:sign_in, 			  	:class => 'btn btn-ajax btn-inverse'
 	link 	  :learn_more, 		    :class => 'learn-more'
 
 	expected_element :superstars_logo

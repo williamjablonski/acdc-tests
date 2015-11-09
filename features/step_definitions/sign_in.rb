@@ -24,7 +24,7 @@
     on(GoogleSignInPage).wait(seconds)
   end
 
-  Then (/^I (.+?) superstars to access my account$/) do |action|
+  Then (/^I (.+?) acdcd to access my account$/) do |action|
     case action
       when 'approve'
         on(GoogleSignInPage).approve_access
@@ -35,9 +35,9 @@
 
   Then(/^I should be on (.+?)$/) do |page|
     case page
-      when 'SuperStarsHomePage'
+      when 'ACDCHomePage'
         on(SuperStarsHomePage)
-      when 'SuperStarsInitialPage'
+      when 'ACDCInitialPage'
         on(SuperStarsInitialPage)
     end
   end
@@ -55,7 +55,7 @@
            When I click on "Next" button
            Then I fill the "Passwd" field with valid data
            When I click on "Log in" button
-           Then I should be on SuperStarsInitialPage
+           Then I should be on ACDCInitialPage
           }
 
   end

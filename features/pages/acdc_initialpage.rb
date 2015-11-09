@@ -1,4 +1,4 @@
-class SuperStarsInitialPage
+class ACDCInitialPage
   include PageObject
 
   a       :banner_image,       :class => 'navbar-brand'
